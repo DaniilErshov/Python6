@@ -1,1 +1,10 @@
-hello
+special_symbols = "@№$%^&*)("
+name_file = input("file = ")
+k = 1
+if name_file[0] in special_symbols: k = 0
+if ((name_file.rfind(".txt") == len(name_file) - 4 and len(name_file) > 4 ) or (name_file.rfind(".docx") == len(name_file) - 5) and len(name_file) > 5) and k != 0:
+    k = 1
+else:
+    k = 0
+if k == 1: print("good")
+else: print("bad")
