@@ -1,0 +1,17 @@
+text = input("text = ")
+text = sorted(text)
+sybm_tmp = text
+k = 0
+for sybm in text:
+    if sybm in sybm_tmp:
+        if text.count(sybm) % 2 ==  1 and k == 0:
+            k = 1
+        elif text.count(sybm) % 2 ==  1 and k == 1:
+            k = 2
+        elif text.count(sybm) % 2 == 0:
+            k == 0
+        sybm_tmp = [i  for i in text if i != sybm]
+if k == 0 or k == 1:
+    print("yes")
+else:
+    print("no")
