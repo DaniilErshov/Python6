@@ -1,0 +1,32 @@
+def find_key(site, key, glub, n = 1):
+    if (n > glub):
+        print("gluboko")
+        return None
+    if key in site.keys():
+        return site[key]
+    else:
+        for i in site.keys():
+            if isinstance(site[i], dict):
+                result = find_key(site[i], key, glub, n + 1)
+                if result != None:
+                    return result
+       
+site = {
+    'html': {
+        'head': {
+            'title': {
+                'title1': "t1",
+                'title2': "t2"
+            }
+        },
+        'body': {
+            'h2': "здесь будет",
+            'div': "block",
+            'p': "abzac"
+        }
+        
+    }
+}
+
+
+print(find_key(site,'title1', 3))
