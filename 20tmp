@@ -1,0 +1,111 @@
+class Stack:
+    def __init__(self):
+        self.elements = []
+    def push(self, elem):
+        self.elements.append(elem)
+    def pop(self):
+        if len(self.elements) > 0: return self.elements.pop()
+        else: print("empty stack")
+stack = Stack()
+stack.push(4)
+stack.push(5)
+
+
+class TaskManager:
+    def __init__(self):
+        self.manager = dict()       
+            
+    def new_task(self, name, index):
+        if index in self.manager.keys():
+            if name not in self.manager[index]:
+                self.manager[index].append(name)
+        else:
+            self.manager[index] = [name]
+        
+    def print_tasks(self):
+        self.manager = dict(sorted(self.manager.items()))
+        
+        for i in self.manager.keys():
+            print(i, self.manager[i])
+    
+    def delete_task(self, name):
+        tmp = tuple(self.manager.keys())
+        i = 0
+        check = 0
+        while (i < len(tmp) and check == 0):
+            if name in self.manager[tmp[i]]:
+                if len(self.manager[tmp[i]]) == 1:
+                    self.manager.pop(tmp[i])
+                else:
+                    self.manager[tmp[i]].remove(name)
+                check = 1
+            i += 1
+        if check == 0: print("not found")
+            
+            
+manager = TaskManager()
+manager.new_task("покушать", 4)
+manager.new_task("уборка", 4)
+manager.new_task("отдохнуть", 1)
+manager.new_task("поесть", 2)
+manager.new_task("сдать дз", 4)
+
+manager.print_tasks()
+manager.delete_task("отдохнуть")
+print()
+manager.print_tasks()
+
+manager.delete_task("уборка")
+print()
+manager.print_tasks()
+
+print()
+manager.delete_task("мыться")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Auto:
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+        self.vector = [0, 0]
+        
+    def move(self, vector):
+        self.x += vector[0]
+        self.y += vector[1]
+        
+    
+class Bus(Auto):
+    def __init__(self, x = 0., y = 0., vector = [], ):
+        super().__init__(x, y, vector)
+        self.persons = 0
+        self.money = 0
+        
+    def enter(self, person):
+        self.persons += person
+        self.money += 23 * person
+    
+    def come_out(self, person):
+        self.persons -= person
+        
